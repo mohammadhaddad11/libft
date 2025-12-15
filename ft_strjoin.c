@@ -5,29 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 20:43:18 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/08 21:03:31 by mhaddad          ###   ########.fr       */
+/*   Created: 2025/12/15 17:06:08 by mhaddad           #+#    #+#             */
+/*   Updated: 2025/12/15 17:06:17 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char *ft_strjoin(char const *s1, char const *s2)
+#include "libft.h"
+
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *p;
-	size_t s1_len;
-	size_t s2_len;
+	char	*str;
+	size_t	len1;
+	size_t	len2;
 
 	if (!s1 || !s2)
-        {
-                return(NULL);
-        }
-	s1_len= ft_strlen(s1);
-	s2_len= ft_strlen(s2);
-
-	p = malloc(s1_len + s2_len + 1);
-	if(!p)
-	{
-		return(NULL);
-	}
-	ft_memcpy(p,s1,s1_len+1);
-	ft_strlcat(p, s2, s1_len + s2_len + 1);
-	return(p);
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	str = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!str)
+		return (NULL);
+	ft_memcpy(str, s1, len1);
+	ft_memcpy(str + len1, s2, len2);
+	str[len1 + len2] = '\0';
+	return (str);
 }
