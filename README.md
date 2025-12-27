@@ -12,6 +12,8 @@ Since we are often not allowed to use standard C library functions in 42 project
 ### 1. Libc Functions
 Re-implementation of standard C library functions.
 > *Note: The prefix `ft_` used in function prototypes stands for **Forty-Two**.*
+
+
 | Function | Description |
 | :--- | :--- |
 | `ft_isalpha` | Checks for an alphabetic character. |
