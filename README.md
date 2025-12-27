@@ -98,3 +98,19 @@ To integrate **libft** into your own C projects, follow these steps:
     ```bash
     cc main.c libft.a -o my_program
     ```
+## 📖 Resources & AI Usage
+
+### 📚 References & Learning Materials
+* **Man Pages:** Used as the primary source for standard C library function prototypes and behaviors (e.g., `man memcpy`, `man strdup`).
+* **Makefiles:** Referenced [Makefile Tutorial](https://makefiletutorial.com/#why-do-makefiles-exist) to understand the structure and purpose of Makefiles.
+* **Data Structures:** YouTube tutorials on "Data Structures" were used to visualize and understand the logic behind Linked Lists.
+* **Testing:** Used [Tripouille/libftTester](https://github.com/Tripouille/libftTester) to verify the correctness of the functions and handle edge cases.
+* **42 School Context:** [Wikipedia Article](https://en.wikipedia.org/wiki/42_(school)) - For general information about the school's peer-to-peer pedagogy and curriculum structure.
+
+### 🤖 AI Usage Disclosure
+Generative AI was used as a supportive tool during the development of this project. Its usage was limited to:
+* **Documentation:** Assisting in drafting, structuring, and formatting this `README.md` file.
+* **Norminette Compliance:** Helping refactor code to meet the 42 Norminette style guidelines (line count, indentation, etc.).
+* **Debugging & Code Review:** Performing final checks to identify potential bugs and logic errors before submission.
+* **Concept Explanation:** Explaining new and complex concepts.
+> *Note: The prefix `ft_` used in function prototypes stands for **Forty-Two**.*
