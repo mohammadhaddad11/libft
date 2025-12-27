@@ -1,6 +1,6 @@
 *This activity has been created as part of the 42 curriculum by <mhaddad>.*
 
-# Libft - Your First C Library
+# Libft - First C Library
 
 ## 📝 Description
 **Libft** is the first project in the 42 curriculum. The goal is to create a custom C library named `libft.a`. This library allows us to re-implement standard C library functions to understand how they work under the hood, as well as create additional utility functions for string manipulation, memory management, and linked lists.
