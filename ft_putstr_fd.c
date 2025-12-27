@@ -6,15 +6,16 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 10:40:45 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/13 10:46:29 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/24 12:19:21 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-void ft_putstr_fd(char *s, int fd)
+
+void	ft_putstr_fd(char *s, int fd)
 {
 	while (*s)
 	{
-		write(fd,s,1);
+		write(fd, s, 1);
 		s++;
 	}
 }

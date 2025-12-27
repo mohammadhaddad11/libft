@@ -6,17 +6,19 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 14:34:16 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/03 14:48:48 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 09:06:29 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-size_t ft_strlen(const char *s)
-{
-	size_t i;
+#include "libft.h"
 
-	i=0;
-	while(s[i] != '\0')
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
 		i++;
 	}
-	return(i);
+	return (i);
 }

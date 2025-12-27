@@ -6,37 +6,43 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 17:04:21 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/08 09:53:16 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/24 17:29:15 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-void *ft_memmove(void *dest, const void *src, size_t n)
+#include "libft.h"
+
+static void	ft_rev(unsigned char *dest, const unsigned char *src, size_t n)
 {
-        const unsigned char *ps;
-        unsigned char *pd;
-
-        if (!dest && !src)
-                return (NULL);
-
-        ps = (unsigned char *)src;
-        pd = (unsigned char *)dest;
-
-        if (pd > ps) 
+	while (n > 0)
 	{
-		while (n > 0)
-		{
-			n--; 
-			pd[n] = ps[n];
-		}
+		n--;
+		dest[n] = src[n];
 	}
+}
+
+static void	ft_fwd(unsigned char *dest, const unsigned char *src, size_t n)
+{
+	while (n > 0)
+	{
+		*dest = *src;
+		dest++;
+		src++;
+		n--;
+	}
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char		*pd;
+	const unsigned char	*ps;
+
+	if (!dest && !src)
+		return (NULL);
+	pd = (unsigned char *)dest;
+	ps = (const unsigned char *)src;
+	if (pd > ps)
+		ft_rev(pd, ps, n);
 	else
-	{
-		while (n > 0)
-		{
-			*pd = *ps;
-			pd++;
-			ps++;
-			n--;
-		}
-	}
+		ft_fwd(pd, ps, n);
 	return (dest);
 }

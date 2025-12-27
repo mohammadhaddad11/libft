@@ -6,14 +6,16 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 14:22:03 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/03 14:26:16 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 08:59:59 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int ft_isascii(int c)
+#include "libft.h"
+
+int	ft_isascii(int c)
 {
-	if(c>= 0 && c<= 127)
+	if (c >= 0 && c <= 127)
 	{
-		return(1);
+		return (1);
 	}
-	return(0);
+	return (0);
 }

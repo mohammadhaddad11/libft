@@ -6,10 +6,12 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 15:14:41 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/13 15:27:18 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 09:01:32 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-void ft_lstadd_front(t_list **lst, t_list *new)
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new->next = *lst;
 	*lst = new;

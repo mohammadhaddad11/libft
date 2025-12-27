@@ -6,31 +6,33 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 17:06:57 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/15 17:41:04 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 09:06:42 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	char	*p;
-	unsigned int	i;
-	size_t	len;
+#include "libft.h"
 
-	i=0;
-	if(!s || !f)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char			*p;
+	unsigned int	i;
+	size_t			len;
+
+	i = 0;
+	if (!s || !f)
 	{
-		return(NULL);
+		return (NULL);
 	}
 	len = ft_strlen(s);
-	p=malloc(len+1);
-	if(!p)
+	p = malloc(len + 1);
+	if (!p)
 	{
-		return(NULL);
+		return (NULL);
 	}
-	while(s[i])
+	while (s[i])
 	{
-		p[i] = f(i,s[i]);
+		p[i] = f(i, s[i]);
 		i++;
 	}
-	p[i]='\0';
-	return(p);
+	p[i] = '\0';
+	return (p);
 }

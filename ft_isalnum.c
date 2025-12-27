@@ -6,14 +6,16 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 14:18:20 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/03 14:21:46 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 10:48:31 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int ftisalnum(int c)
+#include "libft.h"
+
+int	ft_isalnum(int c)
 {
-	if(ft_isalpha(c) || ft_isdigit(c))
+	if (ft_isalpha(c) || ft_isdigit(c))
 	{
-		return(1);
+		return (1);
 	}
-	return(0);
+	return (0);
 }

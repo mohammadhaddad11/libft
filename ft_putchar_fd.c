@@ -6,10 +6,11 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 10:37:23 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/13 10:38:05 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/24 12:16:24 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);

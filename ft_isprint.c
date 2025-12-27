@@ -6,15 +6,16 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 14:26:27 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/03 14:34:00 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 09:00:35 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int ft_isprint(int c)
-{
-	if (c >= 32 && c<=126)
-	{
-		return(1);
-	}
-	return(0);
-}
+#include "libft.h"
 
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+	{
+		return (1);
+	}
+	return (0);
+}

@@ -6,15 +6,17 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 12:26:12 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/08 12:26:44 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 09:08:08 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int             ft_tolower(int c)
-{       
-        if (c>='A' && c<= 'Z')
-        {
-                c +=32;
-                return(c);
-        }
-        return(c);
+#include "libft.h"
+
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+	{
+		c += 32;
+		return (c);
+	}
+	return (c);
 }

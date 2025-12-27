@@ -6,14 +6,16 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 13:50:02 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/03 14:07:20 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 08:59:31 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int ft_isalpha(int c)
+#include "libft.h"
+
+int	ft_isalpha(int c)
 {
-	if ((c>='A' && c<='Z') || (c>='a' && c<='z'))
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 	{
 		return (1);
 	}
-	return(0);
+	return (0);
 }

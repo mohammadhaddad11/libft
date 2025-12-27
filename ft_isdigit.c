@@ -6,15 +6,16 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 14:10:22 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/03 14:17:25 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 09:00:14 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int ft_isdigit.c(int c)
+#include "libft.h"
+
+int	ft_isdigit(int c)
 {
-	if (c>='0' && c<='9')
+	if (c >= '0' && c <= '9')
 	{
 		return (1);
 	}
-	return(0);
+	return (0);
 }
-

@@ -6,15 +6,17 @@
 /*   By: mhaddad <mhaddad@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 12:14:54 by mhaddad           #+#    #+#             */
-/*   Updated: 2025/12/08 12:26:02 by mhaddad          ###   ########.fr       */
+/*   Updated: 2025/12/27 09:08:19 by mhaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int             ft_toupper(int c)
+#include "libft.h"
+
+int	ft_toupper(int c)
 {
-	if (c>='a' && c<= 'z')
+	if (c >= 'a' && c <= 'z')
 	{
-		c -=32;
-		return(c);
+		c -= 32;
+		return (c);
 	}
-	return(c);
+	return (c);
 }
