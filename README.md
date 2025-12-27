@@ -114,4 +114,4 @@ Generative AI was used as a supportive tool during the development of this proje
 * **Debugging & Code Review:** Performing final checks to identify potential bugs and logic errors before submission.
 * **Concept Explanation:** Explaining new and complex concepts.
 > *Note: The prefix `ft_` used in function prototypes stands for **Forty-Two**.*
-*Note: All actual coding and logic implementation were performed by the author.*
+>*Note: All actual coding and logic implementation were performed by the author.*
