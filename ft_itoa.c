@@ -37,7 +37,7 @@ char	*ft_itoa(int n)
 
 	nbr = n;
 	len = get_len(nbr);
-	str = (char *)malloc(len + 1);
+	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
 	str[len--] = '\0';
