@@ -11,7 +11,7 @@ Since we are often not allowed to use standard C library functions in 42 project
 
 ### 1. Libc Functions
 Re-implementation of standard C library functions.
-
+> *Note: The prefix `ft_` used in function prototypes stands for **Forty-Two**.*
 | Function | Description |
 | :--- | :--- |
 | `ft_isalpha` | Checks for an alphabetic character. |
@@ -113,5 +113,4 @@ Generative AI was used as a supportive tool during the development of this proje
 * **Norminette Compliance:** Helping refactor code to meet the 42 Norminette style guidelines (line count, indentation, etc.).
 * **Debugging & Code Review:** Performing final checks to identify potential bugs and logic errors before submission.
 * **Concept Explanation:** Explaining new and complex concepts.
-> *Note: The prefix `ft_` used in function prototypes stands for **Forty-Two**.*
 >*Note: All actual coding and logic implementation were performed by the author.*
