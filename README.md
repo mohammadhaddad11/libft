@@ -77,3 +77,24 @@ To compile the library (including all mandatory and bonus parts), simply run:
 
 ```bash
 make
+```
+### Cleaning Up
+To keep your directory clean and remove temporary files, use the following commands:
+* `make clean`: Removes the object files (`.o`) generated during compilation.
+* `make fclean`: Executes `clean` and also removes the library file (`libft.a`).
+* `make re`: Performs a fresh build by running `fclean` followed by `all`.
+
+### Usage
+To integrate **libft** into your own C projects, follow these steps:
+
+1.  **Include the Header:**
+    Add the following line at the top of your C file (e.g., `main.c`):
+    ```c
+    #include "libft.h"
+    ```
+
+2.  **Compile:**
+    When compiling your project, link it with the `libft.a` library. For example:
+    ```bash
+    cc main.c libft.a -o my_program
+    ```
