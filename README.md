@@ -117,8 +117,6 @@ cc -Wall -Wextra -Werror -I. tests/smoke.c libft.a -o libft_smoke
 - Linux manual pages: `memcpy(3)`, `memmove(3)`, `calloc(3)`, `strdup(3)`, `write(2)`.
 - [Makefile Tutorial](https://makefiletutorial.com/).
 - [libftTester](https://github.com/Tripouille/libftTester), an optional external tester.
-- Documentation organization informed by [oweidat05/Libft_42](https://github.com/oweidat05/Libft_42), [AhmadNajiKam/Libft](https://github.com/AhmadNajiKam/Libft), and [BilalOrabi/libft](https://github.com/BilalOrabi/libft). No source was copied from these references.
-
 ## AI Usage
 
 The earlier project README records AI assistance with documentation, concept
