@@ -2,20 +2,24 @@
 
 # libft
 
+A static C library built from scratch: familiar libc routines, additional string helpers, and singly linked-list utilities.
+
 ## Description
 
-A small C static library implementing character, memory, string, allocation,
-file-descriptor output, and singly linked-list utilities. Building these routines
-from first principles develops an understanding of pointers, byte-oriented
-operations, ownership, callbacks, and reusable library interfaces.
+The project explores pointers, allocation ownership, character and byte operations, and API design. The 43 functions are declared in [`libft.h`](libft.h) and compiled into `libft.a`.
 
-The library contains 43 function implementations and exposes its interface in
-[`libft.h`](libft.h). This repository preserves the original implementation;
-the limitations found during verification are recorded below.
+| Family | Representative functions |
+| --- | --- |
+| Character checks | `ft_isalpha`, `ft_isdigit`, `ft_isprint` |
+| Memory | `ft_memset`, `ft_memcpy`, `ft_memmove`, `ft_memcmp` |
+| Strings | `ft_strlen`, `ft_strlcpy`, `ft_strlcat`, `ft_strnstr` |
+| Allocation | `ft_calloc`, `ft_strdup`, `ft_split`, `ft_itoa` |
+| File-descriptor output | `ft_putchar_fd`, `ft_putstr_fd`, `ft_putnbr_fd` |
+| Linked lists | `ft_lstnew`, `ft_lstadd_back`, `ft_lstclear`, `ft_lstmap` |
 
 ## Instructions
 
-Requirements: a C compiler, Make, and `ar` on a Unix-like system.
+Requires a C compiler, `make`, and `ar`.
 
 ```sh
 git clone git@github.com:mohammadhaddad11/libft.git
@@ -25,103 +29,41 @@ cc -Wall -Wextra -Werror -I. examples/split.c libft.a -o libft_example
 ./libft_example
 ```
 
-The example prints `memory`, `pointers`, and `ownership`, one per line, and frees
-both the split strings and their pointer array. To use the library in another
-program, include `libft.h` and place `libft.a` after the source/object files in
-the linker command.
-
-| Target | Result |
+| Command | Action |
 | --- | --- |
-| `make` | Build `libft.a`, including linked-list functions |
+| `make` | Build `libft.a`, including list functions |
 | `make clean` | Remove object files |
-| `make fclean` | Remove objects and the archive |
-| `make re` | Rebuild from scratch |
+| `make fclean` | Remove object files and archive |
+| `make re` | Rebuild everything |
 
-There is no separate `bonus` target in this implementation.
+## Implementation Notes
 
-## Technical Implementation
+- `ft_memmove` handles overlapping regions; `ft_memcpy` assumes no overlap.
+- Functions returning newly allocated strings transfer ownership to the caller. A `ft_split` result requires freeing each string and the array itself.
+- `ft_calloc` checks multiplication overflow before allocating.
+- List nodes store `void *content`; the caller chooses who owns and frees that content.
+- `ft_lstmap` builds a new list through repeated appends, which can take quadratic time.
 
-| Family | Functions |
+## Testing and Limitations
+
+The repository includes [a smoke-test driver](tests/smoke.c). A strict build, linking example, and targeted memory/string/list checks were run during the earlier portfolio publication.
+
+Three boundary-case problems remain in the current source:
+
+| Function | Limitation |
 | --- | --- |
-| Characters | `ft_isalpha`, `ft_isdigit`, `ft_isalnum`, `ft_isascii`, `ft_isprint`, `ft_toupper`, `ft_tolower` |
-| Memory | `ft_memset`, `ft_bzero`, `ft_memcpy`, `ft_memmove`, `ft_memchr`, `ft_memcmp` |
-| Strings and conversion | `ft_strlen`, `ft_strlcpy`, `ft_strlcat`, `ft_strchr`, `ft_strrchr`, `ft_strncmp`, `ft_strnstr`, `ft_atoi` |
-| Allocation and string construction | `ft_calloc`, `ft_strdup`, `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_itoa`, `ft_strmapi`, `ft_striteri` |
-| Descriptor output | `ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, `ft_putnbr_fd` |
-| Lists | `ft_lstnew`, `ft_lstadd_front`, `ft_lstsize`, `ft_lstlast`, `ft_lstadd_back`, `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap` |
+| `ft_atoi` | Parsing `"-2147483648"` overflows an intermediate positive `int` |
+| `ft_strnstr` | A terminating-match case may read past a string terminator |
+| `ft_strlcat` | An unterminated destination can be scanned beyond the supplied size |
 
-### Memory and ownership
-
-- Memory routines work byte by byte; `ft_memmove` chooses a copying direction
-  for overlapping ranges. `ft_memcpy` requires nonoverlapping ranges.
-- `ft_calloc` checks multiplication overflow before allocating and zeroing.
-- Allocating functions return heap memory owned by the caller. A split result
-  requires freeing each token and then the NULL-terminated pointer array.
-- `ft_split` uses one delimiter character and cleans up earlier tokens when an
-  allocation fails.
-- A list node owns its node allocation, but content ownership is chosen by the
-  caller. Destructive list functions receive a content-deletion callback.
-- `ft_lstmap` allocates new nodes and uses the supplied deletion callback to
-  clean up partially constructed output on node-allocation failure.
-
-## Algorithms and Data Structures
-
-Most scanning and copying routines are linear in the processed byte count.
-`ft_strtrim` checks both ends against a character set; `ft_split` first counts
-words and then constructs substrings. `ft_itoa` widens its input to `long` and
-fills digits backward, including the negative `int` boundary.
-
-Lists contain `void *content` and a `next` pointer. Front insertion is constant
-time; finding the last node or appending traverses the list. Because `ft_lstmap`
-repeatedly appends, constructing its result can take quadratic time.
-
-## Design Decisions
-
-The implementation favors small, inspectable routines and a single public
-header. It does not introduce an allocator abstraction or a generic container
-framework. Helpers return raw pointers, so callers must handle allocation
-failure and ownership explicitly. Many functions assume valid, terminated
-strings and do not provide general NULL-input protection.
-
-## Verification and Known Issues
-
-Publication checks on Fedora, 2026-10-27:
-
-- `make re` passed with `-Wall -Wextra -Werror`.
-- The example and [`tests/smoke.c`](tests/smoke.c) passed. Coverage includes ASCII
-  classification, overlapping moves, bounded copies, split/trim/map operations,
-  integer formatting, and independent list allocation/cleanup.
-- Separate Clang AddressSanitizer/UndefinedBehaviorSanitizer probes found:
-
-| Routine | Reproduced issue |
-| --- | --- |
-| `ft_atoi` | `"-2147483648"` overflows the positive `int` accumulator before applying its sign |
-| `ft_strnstr` | Searching `"abc"` for `"bc"` with length 20 can read past both terminators because the inner loop does not stop at the needle terminator |
-| `ft_strlcat` | A two-byte destination `{'a', 'b'}` with size 2 is scanned past its bound by `ft_strlen` |
-
-These implementations have not been silently repaired. A successful ordinary
-smoke run does not negate the sanitizer findings or establish full libc parity.
-The earlier README mentioned libftTester; that external suite was not rerun in
-this publication session.
-
-Run the bundled smoke checks:
-
-```sh
-make
-cc -Wall -Wextra -Werror -I. tests/smoke.c libft.a -o libft_smoke
-./libft_smoke
-```
+These are documented findings, **not** claims of complete libc compatibility. The implementation has not been modified to conceal them.
 
 ## Resources
 
-- Linux manual pages: `memcpy(3)`, `memmove(3)`, `calloc(3)`, `strdup(3)`, `write(2)`.
-- [Makefile Tutorial](https://makefiletutorial.com/).
-- [libftTester](https://github.com/Tripouille/libftTester), an optional external tester.
+- C/POSIX manual pages: `memcpy(3)`, `memmove(3)`, `calloc(3)`, `strdup(3)`, `write(2)`
+- [Makefile Tutorial](https://makefiletutorial.com/)
+- [libftTester](https://github.com/Tripouille/libftTester) (optional third-party tester; not rerun for this refresh)
+
 ## AI Usage
 
-The earlier project README records AI assistance with documentation, concept
-explanations, style refactoring, and debugging/review. During portfolio
-publication, an AI coding assistant compared source versions, revised this
-documentation, and added examples and verification checks. The existing library
-implementations were preserved; this disclosure does not establish additional
-historical AI use beyond the author's existing account.
+Earlier project documentation records AI assistance with documentation, concept explanations, style refactoring, and debugging/review. AI also helped prepare publication examples and targeted checks. This README refresh used AI-assisted review and retained all C implementation files.
